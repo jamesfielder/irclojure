@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+
+  irc-db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: thisisarubbishpassword
+    ports:
+    - "5432:5432"
+    volumes:
+    - "dbdata:/var/lib/postgresql/data"
+    - "./docker/postgres:/docker-entrypoint-initdb.d"
+
+
+volumes:
+  dbdata:
