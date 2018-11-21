@@ -1,12 +1,5 @@
 (ns irclojure.db)
 
-;(pg/def-datasource irclogs-db {:host     "127.0.0.1"
-;                                :port     5432
-;                                :database "irclogs"
-;                                :username "irc"
-;                                :password "ircpass"
-;                                :pooled   false })
-
 (use 'korma.db)
 (require '[clojure.string :as str])
 
@@ -16,12 +9,13 @@
 
 (use 'korma.core)
 
-(declare irclogs channel nick message)
+(declare irclogs channel nick message inserted)
 
 (defentity irclogs
            (has-one channel)
            (has-one nick)
-           (has-one message))
+           (has-one message)
+           (has-one inserted))
 
 (defn write-log [msg]
   (insert irclogs (values msg)))

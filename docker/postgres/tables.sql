@@ -7,7 +7,8 @@ create table if not exists irclogs
 			primary key,
 	channel varchar(255) not null,
 	nick varchar(255) not null,
-	message text
+	message text,
+	inserted timestamp default now()
 );
 
 alter table irclogs owner to irc;
