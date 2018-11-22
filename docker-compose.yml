@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 
 services:
 
@@ -8,11 +8,16 @@ services:
     environment:
       POSTGRES_PASSWORD: thisisarubbishpassword
     ports:
-    - "5432:5432"
+      - "5432:5432"
     volumes:
-    - "dbdata:/var/lib/postgresql/data"
-    - "./docker/postgres:/docker-entrypoint-initdb.d"
+      - "dbdata:/var/lib/postgresql/data"
+      - "./docker/postgres:/docker-entrypoint-initdb.d"
 
+  oragono:
+    build: "./docker/oragono"
+    ports:
+      - "6667:6667"
+      - "6697:6697"
 
 volumes:
   dbdata:

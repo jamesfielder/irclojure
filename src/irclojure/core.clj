@@ -18,8 +18,7 @@
   [irc args]
   (do
     (println args)
-    (db/write-log (map-irc-msg args))
-    ))
+    (db/write-log (map-irc-msg args))))
 
 (defn -main
   "I don't do a whole lot ... yet."
@@ -28,5 +27,4 @@
   (def irc (ircb/connect server port bot-nick :callbacks {:privmsg callback}))
 
 
-  (ircb/join irc channel)
-  )
+  (ircb/join irc channel))
