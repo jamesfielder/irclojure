@@ -25,5 +25,10 @@ const bots = 20;
 })
 
 const randomData = (client) => {
-  client.send('#test', faker.lorem.sentence())
+  try {
+    client.send('#test', faker.lorem.sentence())
+  }
+  catch (e) {
+    console.log("Error: " + e)
+  }
 }

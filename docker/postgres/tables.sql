@@ -21,3 +21,6 @@ create index if not exists irclogs_channel
 
 create index if not exists irclogs_nick
 	on irclogs (nick);
+
+create index if not exists irclogs_inserted
+	on irclogs (inserted);

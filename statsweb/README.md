@@ -1,6 +1,6 @@
 # statsweb
 
-generated using Luminus version "3.10.16"
+generated using Luminus version "3.10.18"
 
 FIXME
 

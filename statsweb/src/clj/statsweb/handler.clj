@@ -2,6 +2,8 @@
   (:require [statsweb.middleware :as middleware]
             [statsweb.layout :refer [error-page]]
             [statsweb.routes.home :refer [home-routes]]
+            [statsweb.routes.services :refer [service-routes]]
+            [reitit.swagger-ui :as swagger-ui]
             [reitit.ring :as ring]
             [ring.middleware.content-type :refer [wrap-content-type]]
             [ring.middleware.webjars :refer [wrap-webjars]]
@@ -18,8 +20,13 @@
   (middleware/wrap-base
     (ring/ring-handler
       (ring/router
-        [(home-routes)])
+        [(home-routes)
+         (service-routes)])
       (ring/routes
+        (swagger-ui/create-swagger-ui-handler
+          {:path   "/swagger-ui"
+           :url    "/api/swagger.json"
+           :config {:validator-url nil}})
         (ring/create-resource-handler
           {:path "/"})
         (wrap-content-type

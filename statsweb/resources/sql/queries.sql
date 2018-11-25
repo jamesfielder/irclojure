@@ -19,3 +19,16 @@ WHERE id = :id
 -- :doc deletes a user record given the id
 DELETE FROM users
 WHERE id = :id
+
+
+-- :name get-lines-per-day :? :*
+-- :doc get the lines per day in a channel
+SELECT * from linesPerDay(:limit, :interval)
+
+-- :name get-most-active-nicks :? :*
+-- :doc get the most active nicks in a channel
+SELECT * from mostActiveNicks(:limit, :interval)
+
+-- :name get-activity-by-hour :? :*
+-- :doc get the activity by hour of day breakdown
+SELECT * from activityByHour(:limit, :interval)

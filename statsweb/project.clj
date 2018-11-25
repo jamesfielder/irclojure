@@ -21,7 +21,7 @@
                  [luminus/ring-ttl-session "0.3.2"]
                  [markdown-clj "1.0.5"]
                  [metosin/muuntaja "0.6.1"]
-                 [metosin/reitit "0.2.7"]
+                 [metosin/reitit "0.2.9"]
                  [metosin/ring-http-response "0.9.1"]
                  [mount "0.1.14"]
                  [nrepl "0.4.5"]
@@ -91,7 +91,7 @@
    :project/dev  {:jvm-opts ["-Dconf=dev-config.edn"]
                   :dependencies [[binaryage/devtools "0.9.10"]
                                  [cider/piggieback "0.3.10"]
-                                 [doo "0.1.10"]
+                                 [doo "0.1.11"]
                                  [expound "0.7.1"]
                                  [figwheel-sidecar "0.5.17"]
                                  [pjstadig/humane-test-output "0.9.0"]
@@ -99,7 +99,7 @@
                                  [ring/ring-devel "1.7.1"]
                                  [ring/ring-mock "0.3.2"]]
                   :plugins      [[com.jakemccrary/lein-test-refresh "0.23.0"]
-                                 [lein-doo "0.1.10"]
+                                 [lein-doo "0.1.11"]
                                  [lein-figwheel "0.5.17"]]
                   :cljsbuild
                   {:builds
