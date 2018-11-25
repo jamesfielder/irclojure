@@ -34,8 +34,9 @@
      [b/NavbarToggler {:on-click #(swap! expanded? not)}]
      [b/Collapse {:is-open @expanded? :navbar true}
       [b/Nav {:class-name "mr-auto" :navbar true}
-       [nav-link "#/" "Home" :home]
-       [nav-link "#/about" "About" :about]]]]))
+       [nav-link "#/" "Home" :requests]
+       [nav-link "#/about" "About" :about]
+       [nav-link "#/test-requests" "Tester" :home]]]]))
 
 (defn about-page []
   [:div.container
@@ -50,9 +51,30 @@
       [:div {:dangerouslySetInnerHTML
              {:__html (md->html docs)}}]])])
 
+(defn handler [response]
+      (.log js/console (str response)))
+
+(defn get-metric-test []
+      (GET "/api/hours" {:params {:limit false :interval "1 month"}
+                         :handler handler
+                         :headers {"Accept" "application/json"}}))
+
+(defn get-button []
+      [:button {:on-click #(get-metric-test)}])
+
+;(defn get-button [] [:button])
+
+(defn request-tester []
+      [:div.container
+       [:div.row
+        [:div.col-md-12
+         [:div
+          [get-button]]]]])
+
 (def pages
   {:home #'home-page
-   :about #'about-page})
+   :about #'about-page
+   :requests #'request-tester})
 
 (defn page []
   [(pages (:page @session))])
@@ -62,8 +84,9 @@
 
 (def router
   (reitit/router
-    [["/" :home]
-     ["/about" :about]]))
+    [["/" :requests]
+     ["/about" :about]
+     ["/old-home" :home]]))
 
 (defn match-route [uri]
   (->> (or (not-empty (string/replace uri #"^.*#" "")) "/")

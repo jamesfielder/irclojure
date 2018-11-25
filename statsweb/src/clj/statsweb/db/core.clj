@@ -13,7 +13,8 @@
            clojure.lang.IPersistentVector
            [java.sql
             BatchUpdateException
-            PreparedStatement]))
+            PreparedStatement]
+           (java.time ZonedDateTime ZoneId)))
 (defstate ^:dynamic *db*
   :start (if-let [jdbc-url (env :database-url)]
            (conman/connect! {:jdbc-url jdbc-url})
@@ -28,7 +29,7 @@
 (extend-protocol jdbc/IResultSetReadColumn
     java.sql.Timestamp
   (result-set-read-column [v _2 _3]
-    (.toLocalDateTime v))
+    (ZonedDateTime/of (.toLocalDateTime v) (ZoneId/systemDefault)))
   java.sql.Date
   (result-set-read-column [v _2 _3]
     (.toLocalDate v))
