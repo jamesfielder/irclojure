@@ -9,6 +9,9 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/dev-resources" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/statsweb/src/clj" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/statsweb/src/cljc" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/statsweb/src/cljs" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target/default" />
     </content>
     <orderEntry type="inheritedJdk" />
